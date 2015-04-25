@@ -10,7 +10,8 @@ public class Book {
 	private int id;
 	private String isbn;
 	private String title;
-	private String author;
+	private Author author;
+	private Publisher publisher;
 	
 	public int getId() {
 		return id;
@@ -30,11 +31,16 @@ public class Book {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getAuthor() {
+	public Author getAuthor() {
 		return author;
 	}
-	public void setAuthor(String author) {
+	public void setAuthor(Author author) {
 		this.author = author;
 	}
-	
+	public Publisher getPublisher() {
+		return publisher;
+	}
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}	
 }
