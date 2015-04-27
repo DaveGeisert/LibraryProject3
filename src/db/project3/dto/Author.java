@@ -1,7 +1,11 @@
 package db.project3.dto;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Author {
@@ -10,6 +14,8 @@ public class Author {
 	private int id;
 	private String FirstName;
 	private String LastName;
+	@OneToMany
+	private Collection<Book> booksWritten = new ArrayList<Book>();
 	
 	public int getId() {
 		return id;

@@ -53,6 +53,9 @@
 
         <!-- Names the annotated entity class -->
         <mapping class="db.project3.dto.Book"/>
+        <mapping class="db.project3.dto.Author"/>
+        <mapping class="db.project3.dto.Copy"/>
+        
 
     </session-factory>
 
