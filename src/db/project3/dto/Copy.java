@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="COPIES")
+@Table(name="Book_Copy")
 public class Copy {
 	@Id@GeneratedValue
 	private int BId;

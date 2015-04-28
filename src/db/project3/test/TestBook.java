@@ -17,27 +17,31 @@ import db.project3.dto.*;
 public class TestBook {
 	
 	public static void main(String args[]){
-		
-		Author author = new Author();
-		author.setId(1);
-		author.setFirstName("Mark");
-		author.setLastName("Twain");
-		
-		Publisher publisher = new Publisher();
-		publisher.setId(1);
-		publisher.setPublisherCompany("A publisher Company");
-		
-		
+				
 		//create a new "book" entity and populate the data		
 		Book book = new Book();
-		book.setId(1);
 		book.setIsbn("123456abcd");
 		book.setTitle("Adventures of Huckleberry Finn");
-		book.setPublisher(publisher);
-		book.setAuthor(author);
+		
+		Book book1 = new Book();
+		book1.setIsbn("abc");
+		book1.setTitle("some other Twain Novel");
+		
+		Author author1 = new Author();
+		author1.setFirstName("Mark");
+		author1.setLastName("Twain");
+		
+		Subject subject1 = new Subject();
+		subject1.setSubjectDesc("Fiction");
+		
+		book.setAuthor(author1);
+		book.setSubject(subject1);
+		book1.setAuthor(author1);
+		author1.getBooksWritten().add(book);
+		author1.getBooksWritten().add(book1);
 		
 		//Build the Hibernate config and the session factory 
-		//this is all straight from google, don't let it intimidate you		
+		//this is all straight from google, don't let it intimidate you
 		Configuration configuration = new Configuration();
 		configuration.configure();
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();		
@@ -49,6 +53,8 @@ public class TestBook {
 		//Start a database transaction and save the data to the database
 		session.beginTransaction();
 		session.save(book);
+		session.save(book1);
+		session.save(author1);
 		session.getTransaction().commit();
 		session.close();
 		

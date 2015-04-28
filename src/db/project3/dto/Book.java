@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Column;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.CollectionId;
@@ -24,16 +25,28 @@ public class Book {
 	private Author author;
 	
 	@Embedded
-	@GenericGenerator(name="hilo-gen", strategy="hilo")
-	@CollectionId(columns = { @Column(name="SUBJECT_ID") }, generator = "hilo-gen", type = @Type(type="long"))
-	private Collection<Subject> subject = new ArrayList<Subject>();
+	private Subject subject;
 	
+	public Subject getSubject(){
+		return subject;
+	}
+	
+	public void setSubject(Subject subject){
+		this.subject = subject;
+	}
+	//@Embedded
+	//@GenericGenerator(name="hilo-gen", strategy="hilo")
+	///@CollectionId(columns = { @Column(name="SUBJECT_ID") }, generator = "hilo-gen", type = @Type(type="long"))	
+	//private Collection<Subject> subject = new ArrayList<Subject>();
+	
+	/*
 	public Collection<Subject> getSubject() {
 		return subject;
 	}
 	public void setSubject(Collection<Subject> subject) {
 		this.subject = subject;
 	}
+	*/
 
 	public String getIsbn() {
 		return isbn;
