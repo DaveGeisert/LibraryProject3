@@ -55,6 +55,7 @@
         <mapping class="db.project3.dto.Book"/>
         <mapping class="db.project3.dto.Author"/>
         <mapping class="db.project3.dto.Copy"/>
+        <mapping class="db.project3.dto.User"/>
         
 
     </session-factory>
