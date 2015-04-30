@@ -26,14 +26,7 @@ public class Book {
 	
 	@Embedded
 	private Subject subject;
-	
-	public Subject getSubject(){
-		return subject;
-	}
-	
-	public void setSubject(Subject subject){
-		this.subject = subject;
-	}
+
 	//@Embedded
 	//@GenericGenerator(name="hilo-gen", strategy="hilo")
 	///@CollectionId(columns = { @Column(name="SUBJECT_ID") }, generator = "hilo-gen", type = @Type(type="long"))	
@@ -47,6 +40,13 @@ public class Book {
 		this.subject = subject;
 	}
 	*/
+	public Subject getSubject(){
+		return subject;
+	}
+	
+	public void setSubject(Subject subject){
+		this.subject = subject;
+	}
 
 	public String getIsbn() {
 		return isbn;
