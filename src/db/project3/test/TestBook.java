@@ -23,9 +23,17 @@ public class TestBook {
 		book.setIsbn("123456abcd");
 		book.setTitle("Adventures of Huckleberry Finn");
 		
+		Copy bookCopy = new Copy();
+		bookCopy.setBook(book);
+		book.getCopies().add(bookCopy);
+		
 		Book book1 = new Book();
 		book1.setIsbn("abc");
 		book1.setTitle("some other Twain Novel");
+		
+		Copy book1Copy = new Copy();
+		book1Copy.setBook(book1);
+		book1.getCopies().add(book1Copy);
 		
 		Author author1 = new Author();
 		author1.setFirstName("Mark");
@@ -37,6 +45,7 @@ public class TestBook {
 		book.setAuthor(author1);
 		book.setSubject(subject1);
 		book1.setAuthor(author1);
+		book1.setSubject(subject1);
 		author1.getBooksWritten().add(book);
 		author1.getBooksWritten().add(book1);
 		
@@ -44,7 +53,7 @@ public class TestBook {
 		//this is all straight from google, don't let it intimidate you
 		Configuration configuration = new Configuration();
 		configuration.configure();
-		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();		
+		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 		SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 		
 		//Open a session connection to the database
@@ -54,7 +63,6 @@ public class TestBook {
 		session.beginTransaction();
 		session.save(book);
 		session.save(book1);
-		session.save(author1);
 		session.getTransaction().commit();
 		session.close();
 		

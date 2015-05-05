@@ -3,11 +3,13 @@ package db.project3.dto;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Column;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
@@ -21,25 +23,24 @@ public class Book {
 	private String isbn;
 	private String title;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Author author;
 	
 	@Embedded
 	private Subject subject;
 
-	//@Embedded
-	//@GenericGenerator(name="hilo-gen", strategy="hilo")
-	//@CollectionId(columns = { @Column(name="SUBJECT_ID") }, generator = "hilo-gen", type = @Type(type="long"))	
-	//private Collection<Subject> subject = new ArrayList<Subject>();
+	@OneToMany(cascade=CascadeType.ALL)
+	private Collection<Copy> Copies = new ArrayList<Copy>();
 	
-	/*
-	public Collection<Subject> getSubject() {
-		return subject;
+	
+	
+	public Collection<Copy> getCopies() {
+		return Copies;
 	}
-	public void setSubject(Collection<Subject> subject) {
-		this.subject = subject;
+	public void setCopies(Collection<Copy> copies) {
+		Copies = copies;
 	}
-	*/
+
 	public Subject getSubject(){
 		return subject;
 	}
@@ -47,6 +48,7 @@ public class Book {
 	public void setSubject(Subject subject){
 		this.subject = subject;
 	}
+
 
 	public String getIsbn() {
 		return isbn;

@@ -3,12 +3,18 @@ package db.project3.dto;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="AccountType", discriminatorType=DiscriminatorType.STRING)
 public class User {
 	
 	@Id @GeneratedValue
@@ -21,19 +27,10 @@ public class User {
 	private String FirstName;
 	@Column(nullable=false)
 	private String LastName;	
-	@Column(nullable=false)
-	private AccountType accountType;
 	@Embedded
 	private Address address;
-	private Date joinDate;
 	
 	
-	public AccountType getAccountType() {
-		return accountType;
-	}
-	public void setAccountType(AccountType accountType) {
-		this.accountType = accountType;
-	}
 	public String getPassword() {
 		return Password;
 	}
@@ -69,11 +66,5 @@ public class User {
 	}
 	public void setAddress(Address address) {
 		this.address = address;
-	}
-	public Date getJoinDate() {
-		return joinDate;
-	}
-	public void setJoinDate(Date joinDate) {
-		this.joinDate = joinDate;
 	}
 }
