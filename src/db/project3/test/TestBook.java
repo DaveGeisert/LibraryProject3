@@ -6,6 +6,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
+import db.project3.connections.Connection;
 import db.project3.dto.*;
 
 /*
@@ -17,8 +18,7 @@ import db.project3.dto.*;
 public class TestBook {
 	
 	public static void main(String args[]){
-				
-		//create a new "book" entity and populate the data		
+						
 		Book book = new Book();
 		book.setIsbn("123456abcd");
 		book.setTitle("Adventures of Huckleberry Finn");
@@ -48,18 +48,9 @@ public class TestBook {
 		book1.setSubject(subject1);
 		author1.getBooksWritten().add(book);
 		author1.getBooksWritten().add(book1);
+				
+		Session session = Connection.openSession();
 		
-		//Build the Hibernate config and the session factory 
-		//this is all straight from google, don't let it intimidate you
-		Configuration configuration = new Configuration();
-		configuration.configure();
-		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-		SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-		
-		//Open a session connection to the database
-		Session session = sessionFactory.openSession();
-		
-		//Start a database transaction and save the data to the database
 		session.beginTransaction();
 		session.save(book);
 		session.save(book1);
