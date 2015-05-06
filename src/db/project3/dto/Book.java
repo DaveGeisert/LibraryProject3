@@ -24,7 +24,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Book {
 	
 	@Id
-	private String isbn;
+	private int isbn;
 	private String title;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
@@ -51,10 +51,10 @@ public class Book {
 		this.subject = subject;
 	}
 
-	public String getIsbn() {
+	public int getIsbn() {
 		return isbn;
 	}
-	public void setIsbn(String isbn) {
+	public void setIsbn(int isbn) {
 		this.isbn = isbn;
 	}
 	public String getTitle() {

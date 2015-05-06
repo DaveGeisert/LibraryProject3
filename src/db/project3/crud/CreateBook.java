@@ -17,11 +17,11 @@ public class CreateBook {
 		
 	}
 	
-	public void createBook(String isbn, String title, String subject, String AuthorFirstName, String AuthorLastName){
+	public void createBook(int isbn, String title, String subject, String AuthorFirstName, String AuthorLastName){
 		Session session = Connection.openSession();
 		session.beginTransaction();
 		Query queryisbn = session.getNamedQuery("Book.byISBN");
-		queryisbn.setString(0, isbn);
+		queryisbn.setInteger(0, isbn);
 		
 		Query queryauthor = session.getNamedQuery("Author.byFirstAndLast");
 		queryauthor.setString(0, AuthorFirstName);

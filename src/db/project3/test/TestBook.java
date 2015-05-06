@@ -24,7 +24,7 @@ public class TestBook {
 	public static void main(String args[]){
 						
 		Book book = new Book();
-		book.setIsbn("123456abcd");
+		book.setIsbn(2222222);
 		book.setTitle("Adventures of Huckleberry Finn");
 		book.setSubject("Fiction");
 		
@@ -34,7 +34,7 @@ public class TestBook {
 		
 		
 		Book book1 = new Book();
-		book1.setIsbn("abc");
+		book1.setIsbn(3333333);
 		book1.setTitle("some other Twain Novel");
 		book1.setSubject("Fiction");
 		
