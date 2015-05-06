@@ -59,13 +59,13 @@ public class Copy {
 	public Book getBook() {
 		return book;
 	}
-	public void setBook(Book book) {
-		this.book = book;
-	}
 	public CheckoutStatus getCheckOutStatus() {
 		return checkOutStatus;
 	}
 	public void setCheckOutStatus(CheckoutStatus checkOutStatus) {
 		this.checkOutStatus = checkOutStatus;
-	}	
+	}
+	public void setBook(Book book) {
+		this.book = book;
+	}
 }

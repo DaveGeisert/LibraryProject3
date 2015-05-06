@@ -1,5 +1,8 @@
 package db.project3.test;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -7,6 +10,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import db.project3.connections.Connection;
+import db.project3.connections.DropCreate;
 import db.project3.dto.*;
 
 /*
@@ -22,40 +26,55 @@ public class TestBook {
 		Book book = new Book();
 		book.setIsbn("123456abcd");
 		book.setTitle("Adventures of Huckleberry Finn");
+		book.setSubject("Fiction");
 		
 		Copy bookCopy = new Copy();
 		bookCopy.setBook(book);
 		book.getCopies().add(bookCopy);
 		
+		
 		Book book1 = new Book();
 		book1.setIsbn("abc");
 		book1.setTitle("some other Twain Novel");
+		book1.setSubject("Fiction");
 		
 		Copy book1Copy = new Copy();
 		book1Copy.setBook(book1);
 		book1.getCopies().add(book1Copy);
 		
+		
 		Author author1 = new Author();
 		author1.setFirstName("Mark");
 		author1.setLastName("Twain");
 		
-		Subject subject1 = new Subject();
-		subject1.setSubjectDesc("Fiction");
 		
 		book.setAuthor(author1);
-		book.setSubject(subject1);
+		
 		book1.setAuthor(author1);
-		book1.setSubject(subject1);
+		
 		author1.getBooksWritten().add(book);
 		author1.getBooksWritten().add(book1);
 				
-		Session session = Connection.openSession();
+		Session session = DropCreate.openSession();
 		
 		session.beginTransaction();
 		session.save(book);
 		session.save(book1);
 		session.getTransaction().commit();
 		session.close();
+		
+		/*
+		session = DropCreate.openSession();
+		Query query = session.getNamedQuery("Book.byISBN");
+		query.setString(0, "123456abcd");
+		List<Book> books = (List<Book>) query.list();
+		
+		//session.getTransaction().commit();
+		session.close();
+		for (Book booken : books){
+			System.out.println(booken.getIsbn() + " " + booken.getTitle());
+		}
+		*/
 		
 	}
 

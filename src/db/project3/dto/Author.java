@@ -7,10 +7,12 @@ import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
+@NamedQuery(name="Author.byFirstAndLast", query="from Author where FirstName = ? and LastName = ?")
 public class Author {
 	
 	@Id @GeneratedValue
@@ -27,6 +29,7 @@ public class Author {
 	public void setBooksWritten(Collection<Book> booksWritten) {
 		this.booksWritten = booksWritten;
 	}
+	
 	public int getId() {
 		return id;
 	}

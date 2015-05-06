@@ -6,18 +6,18 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-public final class Connection {
+public final class DropCreate {
 	private static Configuration configuration;
 	private static SessionFactory sessionFactory;
 	private static boolean initialized;
 	
-	private Connection(){
+	private DropCreate(){
 		initialized = false;
 	}
 	
 	private static void initialize(){
 		configuration = new Configuration();
-		configuration.configure();
+		configuration.configure("hibernateDropCreate.cfg.xml");
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 	}
