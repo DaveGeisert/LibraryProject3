@@ -10,7 +10,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import db.project3.connections.Connection;
-import db.project3.connections.DropCreate;
+import db.project3.connections.ResetSchema;
 import db.project3.dto.*;
 
 /*
@@ -55,7 +55,7 @@ public class TestBook {
 		author1.getBooksWritten().add(book);
 		author1.getBooksWritten().add(book1);
 				
-		Session session = DropCreate.openSession();
+		Session session = ResetSchema.openSession();
 		
 		session.beginTransaction();
 		session.save(book);
