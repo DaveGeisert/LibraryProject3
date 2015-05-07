@@ -18,7 +18,7 @@ public class Copy {
 	
 	@ManyToOne
 	private Book book;
-	private CheckoutStatus checkOutStatus;
+	private CheckoutStatus checkOutStatus = CheckoutStatus.OnShelf;
 	@ManyToOne
 	private Borrower checkedOutBy = null;
 	@ManyToOne
