@@ -33,14 +33,14 @@ public class Book {
 	private String subject;
 
 	@OneToMany(cascade=CascadeType.ALL)
-	private Collection<Copy> Copies = new ArrayList<Copy>();
+	private Collection<Copy> copies = new ArrayList<Copy>();
 		
 	
 	public Collection<Copy> getCopies() {
-		return Copies;
+		return copies;
 	}
 	public void setCopies(Collection<Copy> copies) {
-		Copies = copies;
+		this.copies = copies;
 	}
 
 	public String getSubject(){

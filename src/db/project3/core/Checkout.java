@@ -40,6 +40,7 @@ public class Checkout {
 			throw new Exception("Book " + bookTitle + " is not available for checkout");
 		}
 		
+		
 	}
 
 }
