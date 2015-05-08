@@ -13,17 +13,6 @@ import javax.persistence.OneToMany;
 public class Staff extends User{
 
 	private Date hireDate;
-	
-	@OneToMany
-	private Collection<Copy> LoanedBooks = new ArrayList<Copy>();
-	
-	public Collection<Copy> getLoanedBooks() {
-		return LoanedBooks;
-	}
-
-	public void setLoanedBooks(Collection<Copy> loanedBooks) {
-		LoanedBooks = loanedBooks;
-	}
 
 	public Date getHireDate() {
 		return hireDate;

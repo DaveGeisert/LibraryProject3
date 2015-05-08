@@ -20,17 +20,17 @@ public class Copy {
 	private Book book;
 	private CheckoutStatus checkOutStatus = CheckoutStatus.OnShelf;
 	@ManyToOne
-	private Borrower checkedOutBy = null;
+	private Borrower borrowedBy = null;
 	@ManyToOne
-	private Staff loanedBy = null;
+	private Staff checkedOutBy = null;
 	private Date checkOutDate;
 	private Date dueDate;	
 		
-	public Staff getLoanedBy() {
-		return loanedBy;
+	public Staff getCheckedOutBy() {
+		return checkedOutBy;
 	}
-	public void setLoanedBy(Staff loanedBy) {
-		this.loanedBy = loanedBy;
+	public void setCheckedOutBy(Staff loanedBy) {
+		this.checkedOutBy = loanedBy;
 	}
 	public Date getCheckOutDate() {
 		return checkOutDate;
@@ -44,17 +44,14 @@ public class Copy {
 	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
 	}
-	public User getCheckedOutBy() {
-		return checkedOutBy;
+	public Borrower getBorrowedBy() {
+		return borrowedBy;
 	}
-	public void setCheckedOutBy(Borrower checkedOutBy) {
-		this.checkedOutBy = checkedOutBy;
+	public void setBorrowedBy(Borrower checkedOutBy) {
+		this.borrowedBy = checkedOutBy;
 	}
 	public int getBId() {
 		return BId;
-	}
-	public void setBId(int bId) {
-		BId = bId;
 	}
 	public Book getBook() {
 		return book;

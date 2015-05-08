@@ -538,10 +538,10 @@ public class DatabaseSchemaExport {
 		borrowers.add(bo8);
 		
 		Address address9 = new Address();
-		address1.setStreetAddress("555 Red St.");
-		address1.setCity("South Park");
-		address1.setState("CO");
-		address1.setZipCode(44444);
+		address9.setStreetAddress("555 Red St.");
+		address9.setCity("South Park");
+		address9.setState("CO");
+		address9.setZipCode(44444);
 		
 		Borrower bo9 = new Borrower();
 		bo9.setFirstName("Wendy");

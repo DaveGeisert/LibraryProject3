@@ -14,7 +14,7 @@ public class Borrower extends User{
 	
 	private Date joinDate;
 	@OneToMany
-	private Collection<Copy> booksBorrowed = new ArrayList<Copy>();
+	private Collection<Copy> borrowedBooks = new ArrayList<Copy>();
 	
 	public Date getJoinDate() {
 		return joinDate;
@@ -22,12 +22,7 @@ public class Borrower extends User{
 	public void setJoinDate(Date joinDate) {
 		this.joinDate = joinDate;
 	}
-	public Collection<Copy> getBooksBorrowed() {
-		return booksBorrowed;
-	}
-	public void setBooksBorrowed(Collection<Copy> booksBorrowed) {
-		this.booksBorrowed = booksBorrowed;
-	}
-	
-	
+	public Collection<Copy> getBorrowedBooks() {
+		return borrowedBooks;
+	}	
 }

@@ -46,9 +46,6 @@ public class User {
 	public int getLibraryCardNumber() {
 		return LibraryCardNumber;
 	}
-	public void setLibraryCardNumber(int libraryCardNumber) {
-		LibraryCardNumber = libraryCardNumber;
-	}
 	public String getFirstName() {
 		return FirstName;
 	}
