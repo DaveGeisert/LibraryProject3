@@ -11,7 +11,7 @@ import db.project3.dto.Book;
 
 public class SearchBook {
 
-	public List<Book> ByTitle(String titleQ)throws Exception{
+	public List<Book> byTitle(String titleQ)throws Exception{
 		Session session = Connection.openSession();
 		Query query = session.createQuery("From Book where title = ?");
 		query.setString(0, titleQ);
@@ -23,7 +23,7 @@ public class SearchBook {
 		return results;		
 	}
 	
-	public List<Book> ByAuthor(String firstName, String lastName)throws Exception{
+	public List<Book> byAuthor(String firstName, String lastName)throws Exception{
 		Session session = Connection.openSession();
 		Query query = session.createQuery("From Author where firstName = ? and lastName = ?");
 		query.setString(0, firstName);
@@ -36,7 +36,7 @@ public class SearchBook {
 		return (List<Book>) results.get(0).getBooksWritten();
 	}
 	
-	public List<Book> BySubject(String subjectQ)throws Exception{
+	public List<Book> bySubject(String subjectQ)throws Exception{
 		Session session = Connection.openSession();
 		Query query = session.createQuery("From Book where subject = ?");
 		query.setString(0, subjectQ);
@@ -48,7 +48,7 @@ public class SearchBook {
 		return results;
 	}
 	
-	public List<Book> ByIsbn(int isbnQ)throws Exception{
+	public List<Book> byIsbn(int isbnQ)throws Exception{
 		Session session = Connection.openSession();
 		Query query = session.createQuery("From Book where title = ?");
 		query.setInteger(0, isbnQ);

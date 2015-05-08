@@ -1,19 +1,18 @@
 package db.project3.dto;
 
 import java.util.ArrayList;
-
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Column;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.CollectionId;
@@ -32,7 +31,7 @@ public class Book {
 	
 	private String subject;
 
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	private Collection<Copy> copies = new ArrayList<Copy>();
 		
 	

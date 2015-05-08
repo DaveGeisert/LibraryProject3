@@ -4,13 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import db.project3.core.Checkout;
+import db.project3.core.CheckoutBook;
 
 public class CheckoutTest {
 
 	@Test
 	public void test() {
-		Checkout checkout = new Checkout();
+		CheckoutBook checkout = new CheckoutBook();
 		
 		try {
 			checkout.checkout("michaelscott", "johnoliver", "A Song of Ice and Fire: A Clash of Kings");
@@ -19,5 +19,4 @@ public class CheckoutTest {
 			e.printStackTrace();
 		}
 	}
-
 }
